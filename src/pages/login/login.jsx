@@ -1,5 +1,5 @@
 import  './login.less'
-import logo from'./images/logo.png'
+import logo from'../../assets/imags/logo.png'
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button,message } from 'antd';
 import {reqLogin} from '../../api/'
@@ -23,7 +23,7 @@ const Item = Form.Item
             const user = result.data
             //保存user
             //保存到local
-            //localStorage.setItem('user_key',JSON.stringify(user))
+           //localStorage.setItem('user_key',JSON.stringify(user))
             saveUser(user)
             //保存到内存中
             memoryUtils.user = user
