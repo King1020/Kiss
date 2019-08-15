@@ -3,8 +3,8 @@ import React, { Component } from 'react'
 export default class Home extends Component {
     render() {
         return (
-            <div>
-                Home
+            <div style={{textAlign:'center',fontSize:30,lineHeight:12}}>
+               欢迎登录硅谷后台管理系统>>>>
             </div>
         )
     }

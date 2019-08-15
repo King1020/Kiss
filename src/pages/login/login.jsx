@@ -19,6 +19,7 @@ const Item = Form.Item
           if(!err){//校验成功
           const result = await reqLogin(values)
           if(result.status===0){//登录成功
+            message.success('登录成功')
               //得到user
             const user = result.data
             //保存user
