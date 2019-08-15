@@ -47,3 +47,12 @@ export const reqCategorys = () => ajax.get('/manage/category/list')
    categoryName,
    categoryId
  })
+
+ //获取商品分页列表
+ 
+ export const reqProducts = (pageNum, pageSize) => ajax.get('/manage/product/list', {
+       params: { // 值是对象, 对象中包含的是query参数数据
+         pageNum,
+         pageSize
+       }
+     })
