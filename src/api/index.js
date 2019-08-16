@@ -48,6 +48,13 @@ export const reqCategorys = () => ajax.get('/manage/category/list')
    categoryId
  })
 
+ //根据分类ID获取分类
+ export const reqCategory = (categoryId) => ajax('/manage/product/info', {
+   params:{
+     categoryId
+   }
+ })
+
  //获取商品分页列表
  
  export const reqProducts = (pageNum, pageSize) => ajax.get('/manage/product/list', {
@@ -56,3 +63,35 @@ export const reqCategorys = () => ajax.get('/manage/category/list')
          pageSize
        }
      })
+
+     //商品搜索
+  export const reqSearch =({
+  pageNum,
+  pageSize,
+  searchType, //搜索方式
+  searchName, 
+  })=>ajax({
+    method:'GET',
+    url: '/manage/product/search',
+    params:{
+      pageNum,
+      pageSize,
+     [searchType]: searchName
+    }
+  })
+  
+  // 更改商品状态
+  export const reqUpdateSearch = (productId, status) => ajax({
+      method: 'POST',
+      url: '/manage/product/updateStatus',
+      data: {
+       productId,
+       status
+        }
+  })
+//根据商品ID获取商品
+  export const reqPorduct = (productId) => ajax.get('/manage/product/info', {
+    params:{
+      productId
+    }
+  })

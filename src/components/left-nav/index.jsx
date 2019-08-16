@@ -29,7 +29,7 @@ const { SubMenu,Item } = Menu;
           }else{
             
             //当前item的children中某个item的key与当前请求的path相同，当前item的key就是openkey。
-          const cItem = item.children.find((cItem) => cItem.key === path )
+            const cItem = item.children.find((cItem) => path.indexOf(cItem.key) === 0)
             if (cItem) {
               //保存openkey
             this.openKey = item.key
@@ -68,7 +68,10 @@ const { SubMenu,Item } = Menu;
    }
     render() {
       //得到请求的路由路径
-       const path = this.props.location.pathname
+      let path = this.props.location.pathname
+      if (path.indexOf('./produdt') === 0){
+        path = './produdt'
+      }
       
       console.log(this.openkey)
         return (
@@ -82,7 +85,7 @@ const { SubMenu,Item } = Menu;
             theme="dark"
             mode="inline"
           //defaultSelectedKeys={[path]}//只有第一次指定的值有效 
-           selectedKeys={[path]}
+              selectedKeys={[path]}
           //自动默认打开选中子菜单的父菜单
               defaultOpenKeys={[this.openKey]}
           
