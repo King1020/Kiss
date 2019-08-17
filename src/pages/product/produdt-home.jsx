@@ -8,7 +8,7 @@ import {
   Table,
   message
 } from 'antd'
-
+import throttle from 'lodash.throttle'
 import ButtonLink from '../../components/button-link'
 import { reqProducts,reqSearch ,reqUpdateSearch} from "../../api"
 import { King} from '../../utils/constants'
@@ -99,6 +99,8 @@ export default class ProductHome extends Component {
       this.getProducts(this.pageNum)
     }
   }
+
+  
   /* 
   异步获取指定页码的商品列表显示
   */

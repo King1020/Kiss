@@ -95,3 +95,14 @@ export const reqCategorys = () => ajax.get('/manage/category/list')
       productId
     }
   })
+
+  //获取所有角色的列表
+  export const reqRoles = () => ajax(KING + '/manage/role/list')
+
+  //添加角色
+  export const reqAddRole = (roleName) => ajax.post(KING + '/manage/role/add',{
+    roleName
+  })
+
+  //更新角色 给角色授权
+  export const reqUpdateRole = (role) => ajax.post(KING + '/manage/role/update',{role})

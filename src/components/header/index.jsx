@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Modal } from 'antd';
 import {withRouter} from 'react-router-dom'
-import {funTime} from '../../utils/dateUtils'
+import { formateDate} from '../../utils/dateUtils'
 import { removeUser} from '../../utils/storageUtils'
 import memoryUtils from '../../utils/memoryUtils'
 import menuConfig from '../../config/menuConfig'
@@ -13,14 +13,14 @@ import './index.less'
  class Header extends Component {
     //初始化
     state = {
-        currentTime:funTime(Date.now()),
+      currentTime: formateDate(Date.now()),
         dayPictureUrl:'',
         Weater:''
     }
       // 启动循环定时器, 每隔1s更新时间
       upTime = () => {
         setInterval(() => {
-          const currentTime = funTime(Date.now())
+          const currentTime = formateDate(Date.now())
           this.setState({
             currentTime
           })

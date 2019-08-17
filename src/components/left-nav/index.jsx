@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {Link,withRouter} from "react-router-dom"
 import { Menu, Icon } from 'antd'
 
-import logo from '../../assets/imags/logo.png'
+import logo from '../../assets/imags/logo.png  '
 import './index.less'
 import menuConfig from '../../config/menuConfig';
 const { SubMenu,Item } = Menu;
@@ -77,7 +77,7 @@ const { SubMenu,Item } = Menu;
         return (
             <div className="left-nav">
               <Link to="/home" className="left-nav-header">
-                  <img src={logo} alt="logo"/>
+                  <img  src={logo} alt="logo"/>
                     <h1>硅谷后台</h1>
               </Link>
             {/* 左侧导航 */}
