@@ -96,6 +96,20 @@ export const reqCategorys = () => ajax.get('/manage/category/list')
     }
   })
 
+//删除图片
+  export const reqDeleteImg = (name) => ajax.post('/manage/img/delete', {
+    name
+  })
+
+//添加、更新商品
+export const reqAddUpdateProduct = (product) => ajax.post(
+  '/manage/product/'+ (product._id ? 'update':'add'),
+ product
+ )
+
+
+
+
   //获取所有角色的列表
   export const reqRoles = () => ajax(KING + '/manage/role/list')
 

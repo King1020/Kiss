@@ -9,16 +9,17 @@ import {
 } from 'antd'
 import { formateDate } from "../../utils/dateUtils"
 import AddForm from './add-from'
+import { Auth} from './auth'
 import { reqRoles ,reqAddRole} from "../../api";
  
 
   //保存要设置权限的roles
-// showAuth = (role) => {
-//   this.role =role
-//   this.setState({
-//     isShowAdd:true
-//   })
-// }
+      // showAuth = (role) => {
+      //   this.role =role
+      //   this.setState({
+      //     isShowAdd:true
+      //   })
+      // }
 /**
  * 角色管理
  */

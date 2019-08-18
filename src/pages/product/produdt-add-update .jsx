@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { Card, Form, Input, Select, Button ,Icon,} from "antd";
 import ButtonLink from '../../components/button-link'
-import { reqCategorys } from '../../api'
+import PicturesWall from './pictures-wall'
+import { reqCategorys,reqAddUpdateProduct } from '../../api'
+import  RichTextEditor from './rich-text-editor'
+import { message } from "antd";
+
 const Item = Form.Item
 const Option = Select.Option
 
@@ -9,6 +13,13 @@ const Option = Select.Option
    // 
     state={
       categorys:[]
+    }
+    
+    constructor(props){
+      super(props)
+      //ref容器
+     this.pwRef =  React.createRef()
+     this.editorRef =  React.createRef()
     }
 
     //异步获取所有分组显示
@@ -33,10 +44,34 @@ const Option = Select.Option
    handlSubmit =(event)=>{
     //阻止事件默认行为
     event.preventDefault()
-    this.props.form.validateFields((error,values)=>{
+    this.props.form.validateFields(async(error,values)=>{
       if(!error){
         const {name,desc,price,categoryId}=values
-        
+        console.log(name, desc, price, categoryId)
+
+        //得到所有上传图片文件名的数组
+        const imgs = this.pwRef.current.getImgs()
+          
+       //得到富文本编辑器指定的detail
+       const detail = this.editorRef.current.getDetail() 
+       
+       //准备product
+       const product = {name, desc, price, categoryId,imgs,detail}
+      if(this.product._id){
+        product._id =this.product._id  
+
+
+      }
+       //发添加商品请求
+       
+       // 法修改商品请求
+      const  result =await reqAddUpdateProduct(product)
+      if(result.status===0){
+        message.success('商品修改成功')
+        this.props.history.replace('/product')
+      }else{
+        message.error('商品操作失败')
+      }
       }
     })
    }
@@ -109,7 +144,7 @@ const Option = Select.Option
                   {validator:this.validatorPrice}
                 ]
               })(
-                <Input type='numder' placeholder='商品价格' addonAfter='元'></Input>
+                <Input type='number' placeholder='商品价格' addonAfter='元'></Input>
               )
             }
           </Item>
@@ -130,6 +165,17 @@ const Option = Select.Option
                 </Select>
               )
             }
+          </Item>
+          
+          <Item label="商品图片" wrapperCol={{ span: 14}}>
+            {/* 内部会将组件对象保存到ref容器对象：current：组件对象 */}
+            <PicturesWall ref={this.pwRef} imgs={product.imgs}/>
+  
+          </Item>
+          
+          <Item label="商品详情" wrapperCol={{ span: 20 }}>
+            <RichTextEditor ref={this.editorRef} imgs={product.detail}/>
+
           </Item>
           
           <Item>
