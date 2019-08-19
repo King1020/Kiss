@@ -6,7 +6,6 @@ import {reqLogin} from '../../api/'
 import memoryUtils from '../../utils/memoryUtils';
 import {Redirect} from 'react-router-dom';
 import {saveUser} from '../../utils/storageUtils'
-import { from } from 'rxjs';
 const Item = Form.Item
 // 登录路由
  class Login extends Component {

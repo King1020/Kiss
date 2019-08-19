@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Card, Button, Icon, Table, Modal, message,} from "antd";
 //添加 修改 分类
-import {reqCategorys,reqAddCategory,reqUpCategory  } from "../../api";
+import {reqCategorys,reqAddCategory } from "../../api";
 import ButtonLink  from "../../components/button-link";
 import CategoryFrom  from "./category-from";
 
